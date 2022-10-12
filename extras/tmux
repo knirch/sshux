@@ -1,0 +1,10 @@
+#!/bin/bash
+# Convenience wrapper that strips away any TMUX environment if inside of a
+# sshux wrapped session.
+
+if [[ $TMUX == *sshux-wrapped* ]]; then
+	mapfile -t < <(export | sed 's/^declare .. \(.*\).*/\1/' | grep ^TMUX)
+	export -n "${MAPFILE[@]}"
+fi
+
+exec tmux "$@"

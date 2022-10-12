@@ -1,0 +1,42 @@
+#!/bin/bash
+
+if [[ -z $SSH_CLIENT ]] || [[ -n $TMUX ]]; then
+	# Exit with non 0 to allow the calling shell to determine if it should
+	# continue or halt.
+	exit 1
+fi
+
+tmux_opt=(-L sshux-wrapped)
+
+find_detached() {
+	while read -r attached name; do
+		(( attached > 0 )) && continue
+		echo "$name"
+		return 0
+	done < <(tmux "${tmux_opt[@]}" list-session -F "#{session_attached} #{session_name}")
+	return 1
+}
+
+config=$(mktemp -p "${TMPDIR:-/tmp}" sshux--tmux-conf.XXXXXX)
+cat >"$config" <<-EOF
+	# As close to a normal shell as possible
+	set -g status off
+	set-option -g exit-empty off
+	set-option -g prefix None
+	set-option -g history-limit 200000
+	set-option -g default-terminal "screen-256color"
+EOF
+tmux "${tmux_opt[@]}" -f "$config" start-server
+rm -f "$config"
+
+if detached=$(find_detached); then
+	tmux "${tmux_opt[@]}" attach-session -t "$detached"
+else
+	tmux "${tmux_opt[@]}" -f "$config" new-session -s "sshux-$$"
+fi
+
+# exit 0 to tell the caller that we're leaving a session, this could be used to
+# remain in a normal shell after exit/detach, but there is no good way of
+# passing messages from inside of tmux to this script. See below for a too
+# involved way of sorting it.
+exit 0
