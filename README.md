@@ -27,6 +27,93 @@ Open PowerShell as an administrator and run the following command: Enable-Window
 
 it's a bit crap
 
+load it in msklc, project / Build DLL and Setup Package
+
+open dir, install via setup
+
+for me it gets installed as a extra keyboard layout on English (United States)
+I canät switch to that layout with win+space, but with the Alt+Left Shift hotkey it will cycle through the languages, the one with two keyboards will appear stuck as it switches between the two keyboards in that language.
+
+Recommended is to only have your layout available for your language preference, that way the correct layout will be shown in the language bar.
+
+Another option is to set the kayboard inI canät switch to that layout with win+space, but with the Alt+Left Shift hotkey it will cycle through the languages, the one with two keyboards will appear stuck as it switches between the two keyboards in that language.
+
+Recommended is to only have your layout available for your language preference, that way the correct layout will be shown in the language bar.
+
+Another option is to set the kayboard inI canät switch to that layout with win+space, but with the Alt+Left Shift hotkey it will cycle through the languages, the one with two keyboards will appear stuck as it switches between the two keyboards in that language.
+
+Recommended is to only have your layout available for your language preference, that way the correct layout will be shown in the language bar.
+
+Another option is to set the kayboard inI canät switch to that layout with win+space, but with the Alt+Left Shift hotkey it will cycle through the languages, the one with two keyboards will appear stuck as it switches between the two keyboards in that language.
+
+Recommended is to only have your layout available for your language preference, that way the correct layout will be shown in the language bar.
+
+Another option is to set the kayboard inI canät switch to that layout with win+space, but with the Alt+Left Shift hotkey it will cycle through the languages, the one with two keyboards will appear stuck as it switches between the two keyboards in that language.
+
+Recommended is to only have your layout available for your language preference, that way the correct layout will be shown in the language bar.
+
+Another option is to set the kayboard inI canät switch to that layout with win+space, but with the Alt+Left Shift hotkey it will cycle through the languages, the one with two keyboards will appear stuck as it switches between the two keyboards in that language.
+
+Recommended is to only have your layout available for your language preference, that way the correct layout will be shown in the language bar.
+
+Another option is to set the kayboard inI canät switch to that layout with win+space, but with the Alt+Left Shift hotkey it will cycle through the languages, the one with two keyboards will appear stuck as it switches between the two keyboards in that language.
+
+Recommended is to only have your layout available for your language preference, that way the correct layout will be shown in the language bar.
+
+Another option is to set the kayboard inI canät switch to that layout with win+space, but with the Alt+Left Shift hotkey it will cycle through the languages, the one with two keyboards will appear stuck as it switches between the two keyboards in that language.
+
+Recommended is to only have your layout available for your language preference, that way the correct layout will be shown in the language bar.
+
+Another option is to set the kayboard inI canät switch to that layout with win+space, but with the Alt+Left Shift hotkey it will cycle through the languages, the one with two keyboards will appear stuck as it switches between the two keyboards in that language.
+
+Recommended is to only have your layout available for your language preference, that way the correct layout will be shown in the language bar.
+
+Another option is to set the kayboard in
+
+
+ohmygod, 13 ways to get into the correct place...
+https://www.howtogeek.com/709843/13-ways-to-open-the-control-panel-on-windows-10/
+
+shees
+
+got an old style window called "Text Services and Input Languages"
+tabs Language Bar and Advanced Key Settings
+
+Control /Name Microsoft.Language  gets you to the same destination as "Language Preferences"
+
+in there you can tweak your languages, or click on Keyboard, clicking on that gives you more
+links, like; Language bar options, which opens the old style window mentioned above
+and "Input language hot keys" which opens the same, but on the tab "Advanced Key Settings"
+
+most settings in here doesnt seem to do anything on windows 11, at least
+when it comes to the language bar settings.
+
+"Override for default input method"
+Use language list (recommended)
+or pick the keyboard layout.
+
+
+go to language preferences
+
+
+control /name Microsoft.RegionalAndLanguageOptions
+control /name Microsoft.Language
+
+
+lyQualifiedErrorId : MissingExpression
+
+PS C:\Users\knirc> rundll32.exe Shell32.dll,Control_RunDLL "input.dll,,{C07337D3-DB2C-4D0B-9A93-B722A6C106E2}"
+PS C:\Users\knirc> rundll32.exe Shell32.dll,Control_RunDLL "input.dll,,{C07337D3-DB2C-4D0B-9A93-B722A6C106E2}"
+PS C:\Users\knirc> rundll32.exe Shell32.dll,Control_RunDLL "input.dll,,{C07337D3-DB2C-4D0B-9A93-B722A6C106E2}{HOTKEYS}"
+PS C:\Users\knirc> rundll32.exe Shell32.dll,Control_RunDLL "input.dll,,{C07337D3-DB2C-4D0B-9A93-B722A6C106E2}{HOTKEYS}"
+PS C:\Users\knirc>
+
+how people find these are a complete mystery to me.. but.. hey, that's one way of finding your way to that setting if it tickles your fancy
+
+
+but now I'm super frustrated as to how people know this magical incantation to begin with.. how? and how is {HOTKEYS} magically found as well? .... 
+
+seems good as well: https://learn.microsoft.com/en-us/windows/win32/shell/executing-control-panel-items
 
 caps lock as control
 
