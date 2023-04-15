@@ -1,0 +1,9 @@
+altgr intl knirch
+
+my windows keyboard mappings that allow me to use
+swedish characters on an english keyboard layout.
+
+use https://www.microsoft.com/en-us/download/details.aspx?id=102134
+Microsoft Keyboard Layout Creator (MSKLC) Version 1.4
+
+(not available through winget sadly)
