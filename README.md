@@ -8,6 +8,10 @@ Microsoft Keyboard Layout Creator (MSKLC) Version 1.4
 
 (not available through winget sadly)
 
+requires .NET framework version 3.5
+
+Open PowerShell as an administrator and run the following command: Enable-WindowsOptionalFeature -Online -FeatureName "NetFx3" This will automatically download, install and enable.NET Framework 3.5 on your PC. Download and install.NET
+
 caps lock as control
 
 install sharpkeys;
