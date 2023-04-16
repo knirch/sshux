@@ -124,6 +124,8 @@ https://github.com/randyrants/sharpkeys/
 
 Special: Caps Lock (00_3a) -> Special: Left Ctrl (00_1d)
 
+see more details at : https://renenyffenegger.ch/notes/Windows/registry/tree/HKEY_LOCAL_MACHINE/System/CurrentControlSet/Control/Keyboard-Layout/index
+
 dual function ctrl key
 
 DualCTRL-Esc.ahk
