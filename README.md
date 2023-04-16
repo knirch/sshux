@@ -1,17 +1,113 @@
-altgr intl knirch
+# Keyboard tweaks
 
-my windows keyboard mappings that allow me to use
-swedish characters on an english keyboard layout.
+## Keyboard layout
 
-use https://www.microsoft.com/en-us/download/details.aspx?id=102134
-Microsoft Keyboard Layout Creator (MSKLC) Version 1.4
+    altgr intl knirch
 
-(not available through winget sadly)
+A small variation on the international keymap, which places the swedish umlauts
+on a, e and o. 
 
-requires .NET framework version 3.5
+### Building
 
-Open PowerShell as an administrator and run the following command: Enable-WindowsOptionalFeature -Online -FeatureName "NetFx3" This will automatically download, install and enable.NET Framework 3.5 on your PC. Download and install.NET
+To compile and install, use [Microsoft Keyboard Layout Creator][msklc]. Not available through winget.
 
+It requires .NET Framework 3.5 to be installed. Start `powershell` with administrator privileges.
+
+```ps
+    Enable-WindowsOptionalFeature -Online -FeatureName "NetFx3"
+```
+
+Open MSKLC and load the layout. Under `project` run `Build DLL and Setup Package`.
+
+Open the directory created, install the layout via `setup`.
+
+[msklc]: https://www.microsoft.com/en-us/download/details.aspx?id=102134
+
+### Using
+
+For me it gets installed as a extra keyboard layout on English (United States).
+
+#### Windows 10
+
+It's not possible to switch to that layout via `win + space`, but with `alt + left shift` hotkey it will cycle through the languages, and appear stuck when cycling through a language with multiple layouts.
+
+Recommended is to set up a language with only one layout so that the normal switcher reports the correct keyboard, probably?
+
+##### Rabbit-hole
+
+The `alt + left shift` was found under one of those links in the control panel. 
+
+Windows has lots of odd ways of getting to certain configuration windows.
+
+`control /Name Microsoft.Language`
+`control /name Microsoft.RegionalAndLanguageOptions`
+`rundll32.exe Shell32.dll,Control_RunDLL "input.dll,,{C07337D3-DB2C-4D0B-9A93-B722A6C106E2}"`
+`rundll32.exe Shell32.dll,Control_RunDLL "input.dll,,{C07337D3-DB2C-4D0B-9A93-B722A6C106E2}{HOTKEYS}"`
+
+"Text Services and Input Languages"
+Language Bar
+Advanced Key Settings
+"Input language hot keys"
+"Advanced Key Settings"
+
+Windows 11:
+Time & language > Typing > Advanced keyboard settings
+* Language bar options
+* Input language hot keys
+
+
+Old style config window:
+
+"Text Services and Input Languages"
+
+Tabs:
+"Language Bar"
+"Advanced Key Settings"
+
+
+win11:
+Control /Name Microsoft.Language :: Time & language > Language & region
+in here, click on Typing, then "Advanced keyboard settings", then on "Language bar options" or "Input language hot keys".
+this leads to the rundll thing.
+
+
+
+
+
+Control /Name Microsoft.Language  gets you to the same destination as "Language Preferences"
+
+in there you can tweak your languages, or click on Keyboard, clicking on that gives you more
+links, like; Language bar options, which opens the old style window mentioned above
+and "Input language hot keys" which opens the same, but on the tab "Advanced Key Settings"
+
+most settings in here doesnt seem to do anything on windows 10, at least
+when it comes to the language bar settings.
+
+"Override for default input method"
+Use language list (recommended)
+or pick the keyboard layout.
+
+
+go to language preferences
+
+
+control /name Microsoft.RegionalAndLanguageOptions
+control /name Microsoft.Language
+
+
+
+
+how people find these are a complete mystery to me.. but.. hey, that's one way of finding your way to that setting if it tickles your fancy
+
+
+but now I'm super frustrated as to how people know this magical incantation to begin with.. how? and how is {HOTKEYS} magically found as well? .... 
+
+seems good as well: https://learn.microsoft.com/en-us/windows/win32/shell/executing-control-panel-items
+
+
+
+
+### Crap
 
     WARNING: ^ (U+005e) is already defined more than once on the keyboard (on VK_6, ShiftState 'Ctl+Alt' and VK_6, ShiftState 'Shift').
     WARNING: ö (U+00f6) is already defined more than once on the keyboard (on VK_P, ShiftState 'Ctl+Alt' and VK_O, ShiftState 'Ctl+Alt').
@@ -27,93 +123,6 @@ Open PowerShell as an administrator and run the following command: Enable-Window
 
 it's a bit crap
 
-load it in msklc, project / Build DLL and Setup Package
-
-open dir, install via setup
-
-for me it gets installed as a extra keyboard layout on English (United States)
-I canät switch to that layout with win+space, but with the Alt+Left Shift hotkey it will cycle through the languages, the one with two keyboards will appear stuck as it switches between the two keyboards in that language.
-
-Recommended is to only have your layout available for your language preference, that way the correct layout will be shown in the language bar.
-
-Another option is to set the kayboard inI canät switch to that layout with win+space, but with the Alt+Left Shift hotkey it will cycle through the languages, the one with two keyboards will appear stuck as it switches between the two keyboards in that language.
-
-Recommended is to only have your layout available for your language preference, that way the correct layout will be shown in the language bar.
-
-Another option is to set the kayboard inI canät switch to that layout with win+space, but with the Alt+Left Shift hotkey it will cycle through the languages, the one with two keyboards will appear stuck as it switches between the two keyboards in that language.
-
-Recommended is to only have your layout available for your language preference, that way the correct layout will be shown in the language bar.
-
-Another option is to set the kayboard inI canät switch to that layout with win+space, but with the Alt+Left Shift hotkey it will cycle through the languages, the one with two keyboards will appear stuck as it switches between the two keyboards in that language.
-
-Recommended is to only have your layout available for your language preference, that way the correct layout will be shown in the language bar.
-
-Another option is to set the kayboard inI canät switch to that layout with win+space, but with the Alt+Left Shift hotkey it will cycle through the languages, the one with two keyboards will appear stuck as it switches between the two keyboards in that language.
-
-Recommended is to only have your layout available for your language preference, that way the correct layout will be shown in the language bar.
-
-Another option is to set the kayboard inI canät switch to that layout with win+space, but with the Alt+Left Shift hotkey it will cycle through the languages, the one with two keyboards will appear stuck as it switches between the two keyboards in that language.
-
-Recommended is to only have your layout available for your language preference, that way the correct layout will be shown in the language bar.
-
-Another option is to set the kayboard inI canät switch to that layout with win+space, but with the Alt+Left Shift hotkey it will cycle through the languages, the one with two keyboards will appear stuck as it switches between the two keyboards in that language.
-
-Recommended is to only have your layout available for your language preference, that way the correct layout will be shown in the language bar.
-
-Another option is to set the kayboard inI canät switch to that layout with win+space, but with the Alt+Left Shift hotkey it will cycle through the languages, the one with two keyboards will appear stuck as it switches between the two keyboards in that language.
-
-Recommended is to only have your layout available for your language preference, that way the correct layout will be shown in the language bar.
-
-Another option is to set the kayboard inI canät switch to that layout with win+space, but with the Alt+Left Shift hotkey it will cycle through the languages, the one with two keyboards will appear stuck as it switches between the two keyboards in that language.
-
-Recommended is to only have your layout available for your language preference, that way the correct layout will be shown in the language bar.
-
-Another option is to set the kayboard in
-
-
-ohmygod, 13 ways to get into the correct place...
-https://www.howtogeek.com/709843/13-ways-to-open-the-control-panel-on-windows-10/
-
-shees
-
-got an old style window called "Text Services and Input Languages"
-tabs Language Bar and Advanced Key Settings
-
-Control /Name Microsoft.Language  gets you to the same destination as "Language Preferences"
-
-in there you can tweak your languages, or click on Keyboard, clicking on that gives you more
-links, like; Language bar options, which opens the old style window mentioned above
-and "Input language hot keys" which opens the same, but on the tab "Advanced Key Settings"
-
-most settings in here doesnt seem to do anything on windows 11, at least
-when it comes to the language bar settings.
-
-"Override for default input method"
-Use language list (recommended)
-or pick the keyboard layout.
-
-
-go to language preferences
-
-
-control /name Microsoft.RegionalAndLanguageOptions
-control /name Microsoft.Language
-
-
-lyQualifiedErrorId : MissingExpression
-
-PS C:\Users\knirc> rundll32.exe Shell32.dll,Control_RunDLL "input.dll,,{C07337D3-DB2C-4D0B-9A93-B722A6C106E2}"
-PS C:\Users\knirc> rundll32.exe Shell32.dll,Control_RunDLL "input.dll,,{C07337D3-DB2C-4D0B-9A93-B722A6C106E2}"
-PS C:\Users\knirc> rundll32.exe Shell32.dll,Control_RunDLL "input.dll,,{C07337D3-DB2C-4D0B-9A93-B722A6C106E2}{HOTKEYS}"
-PS C:\Users\knirc> rundll32.exe Shell32.dll,Control_RunDLL "input.dll,,{C07337D3-DB2C-4D0B-9A93-B722A6C106E2}{HOTKEYS}"
-PS C:\Users\knirc>
-
-how people find these are a complete mystery to me.. but.. hey, that's one way of finding your way to that setting if it tickles your fancy
-
-
-but now I'm super frustrated as to how people know this magical incantation to begin with.. how? and how is {HOTKEYS} magically found as well? .... 
-
-seems good as well: https://learn.microsoft.com/en-us/windows/win32/shell/executing-control-panel-items
 
 caps lock as control
 
@@ -170,4 +179,5 @@ didnt care to update the script currently to work in ahk2, as that one asked me
 a weird question.. 
 
 shrug
+
 
