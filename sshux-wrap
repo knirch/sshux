@@ -4,9 +4,19 @@ if [[ $LC_SSHUX_DISABLE == 1 ]]; then
 	exit 1
 fi
 
-if [[ -z $SSH_CLIENT ]] || [[ -n $TMUX ]]; then
-	# Exit with non 0 to allow the calling shell to determine if it should
-	# continue or halt.
+# Exit 0; Caller should exit
+# Exit 1; Caller should spawn shell
+
+# Exit with 1 to indicate to calling shell that it should
+# continue with its execution
+
+# Inside of tmux, tell caller to start shell.
+if [[ -n $TMUX ]]; then
+	exit 1
+fi
+
+# Determine if local execution should be wrapped in tmux
+if [[ -z $SSH_CLIENT && $SSHUX_USE_LOCAL != 1 ]]; then
 	exit 1
 fi
 

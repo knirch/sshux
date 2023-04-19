@@ -37,6 +37,11 @@ Disables SSHUX for this session.
 
 Create new session even if there are detached sessions available.
 
+### `SSHUX_USE_LOCAL=1`
+
+Will wrap session even if `SSH_CLIENT` is empty. Useful if local terminals should
+be part of the sshux sessions.
+
 ## `extras/tmux`
 
 Convenience wrapper that strips TMUX if it matches `sshux-wrapped`. This can be
