@@ -4,6 +4,11 @@ if [[ $LC_SSHUX_DISABLE == 1 ]]; then
 	exit 1
 fi
 
+tmux() {
+	# command tmux "$@"
+	command /home/tnilsson/.local/bin/tmux "$@"
+}
+
 # Exit 0; Caller should exit
 # Exit 1; Caller should spawn shell
 
