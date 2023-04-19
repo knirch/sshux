@@ -13,6 +13,9 @@ fi
 tmux_opt=(-L sshux-wrapped)
 
 find_detached() {
+	if [[ $LC_SSHUX_FORCE_NEW == 1 ]]; then
+		return 1
+	fi
 	while read -r attached name; do
 		(( attached > 0 )) && continue
 		echo "$name"

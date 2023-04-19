@@ -33,6 +33,10 @@ Pass variables when you ssh to the server to alter how sshux behaves.
 
 Disables SSHUX for this session.
 
+### `LC_SSHUX_FORCE_NEW=1`
+
+Create new session even if there are detached sessions available.
+
 ## `extras/tmux`
 
 Convenience wrapper that strips TMUX if it matches `sshux-wrapped`. This can be
