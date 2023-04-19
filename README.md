@@ -42,6 +42,12 @@ Create new session even if there are detached sessions available.
 Will wrap session even if `SSH_CLIENT` is empty. Useful if local terminals should
 be part of the sshux sessions.
 
+### `LC_WIN11`
+
+Magic variable that tries to sneak as far into your session as possible. A
+failed attempt at passing values into the session. It currently reaches as far
+as right after the session has been spawned.
+
 ## `extras/tmux`
 
 Convenience wrapper that strips TMUX if it matches `sshux-wrapped`. This can be

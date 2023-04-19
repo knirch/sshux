@@ -47,10 +47,12 @@ tmux "${tmux_opt[@]}" -f "$config" start-server
 rm -f "$config"
 
 if detached=$(find_detached); then
-	tmux "${tmux_opt[@]}" attach-session -t "$detached"
+	tmux "${tmux_opt[@]}" attach-session -t "$detached" \; set-environment LC_WIN11 "$LC_WIN11"
 else
-	tmux "${tmux_opt[@]}" new-session -s "sshux-$$"
+	tmux "${tmux_opt[@]}" new-session -s "sshux-$$" \; set-environment LC_WIN11 "$LC_WIN11"
 fi
+
+# source <(tmux show-environment -s)
 
 # exit 0 to tell the caller that we're leaving a session, this could be used to
 # remain in a normal shell after exit/detach, but there is no good way of
