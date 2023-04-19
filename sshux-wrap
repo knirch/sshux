@@ -1,13 +1,23 @@
 #!/bin/bash
 
+tmux_opt=(-L sshux-wrapped)
+tmux() { command tmux "${tmux_opt[@]}" sshux-wrapped "$@"; }
+tmux() { command /home/tnilsson/.local/bin/tmux "${tmux_opt[@]}" "$@"; }
+
+# Test if tmux can communicate with the server. This is only needed if you for
+# some reason have mixed versions of tmux installed, and the wrong version is
+# trying to communicate with the server.
+
+# this is bad.. timeout will of course not work on shell function wrappers, it
+# will search through $PATH, meaning my wrapper above will never be considered
+#if ! timeout 1 tmux ls &>/dev/null; then
+#	echo "tmux can't communicate with server, disabling sshux" >&2
+#	exit 1
+#fi
+
 if [[ $LC_SSHUX_DISABLE == 1 ]]; then
 	exit 1
 fi
-
-tmux() {
-	# command tmux "$@"
-	command /home/tnilsson/.local/bin/tmux "$@"
-}
 
 # Exit 0; Caller should exit
 # Exit 1; Caller should spawn shell
@@ -25,7 +35,6 @@ if [[ -z $SSH_CLIENT && $SSHUX_USE_LOCAL != 1 ]]; then
 	exit 1
 fi
 
-tmux_opt=(-L sshux-wrapped)
 
 find_detached() {
 	if [[ $LC_SSHUX_FORCE_NEW == 1 ]]; then
@@ -35,7 +44,7 @@ find_detached() {
 		(( attached > 0 )) && continue
 		echo "$name"
 		return 0
-	done < <(tmux "${tmux_opt[@]}" list-session -F "#{session_attached} #{session_name}")
+	done < <(tmux list-session -F "#{session_attached} #{session_name}")
 	return 1
 }
 
@@ -48,13 +57,13 @@ cat >"$config" <<-EOF
 	set-option -g history-limit 200000
 	set-option -g default-terminal "screen-256color"
 EOF
-tmux "${tmux_opt[@]}" -f "$config" start-server
+tmux -f "$config" start-server
 rm -f "$config"
 
 if detached=$(find_detached); then
-	tmux "${tmux_opt[@]}" attach-session -t "$detached" \; set-environment LC_WIN11 "$LC_WIN11"
+	tmux attach-session -t "$detached" \; set-environment LC_WIN11 "$LC_WIN11"
 else
-	tmux "${tmux_opt[@]}" new-session -s "sshux-$$" \; set-environment LC_WIN11 "$LC_WIN11"
+	tmux new-session -s "sshux-$$" \; set-environment LC_WIN11 "$LC_WIN11"
 fi
 
 # source <(tmux show-environment -s)
