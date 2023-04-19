@@ -8,15 +8,12 @@ know the ones, the one your collegue or friend smugly told you "you should have
 started screen or tmux" when you curse up a storm about losing work due to a
 network outage.
 
-Add sshux to your .bashrc on the server, consider that it will loaded twice,
-first up to the point where sshux starts, then fully when sshux has wrapped
-your session.
+Add sshux to your .bashrc on the server;
 
     /path/to/sshux-wrap && exit
 
-The `&& exit` is needed as `sshux-wrap` will `exit 1` if the calling shell is
-either inside a tmux session (i.e. it just wrapped the shell), or is not a SSH
-session.
+The `&& exit` is needed to leave the shell when you disconnect from/ or end a
+sshux session.
 
 Now connect to your system and it should look just like normal. That's it.
 
@@ -25,7 +22,7 @@ in the sshux namespace, or create a new session.
 
 sshux aims to be as unintrusive as possible, the tmux configuration aims to be
 as bare and non intrusive as possible. There's no prefix key, no status bars or
-anything. Use tmux in your shell to modify the current session if needed.
+anything. Use `tmux` in your shell to modify the current session if needed.
 
 If needed, consider a wrapper to make normal tmux operations less fiddly. See
 example in `extras/tmux`.
