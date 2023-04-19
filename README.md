@@ -24,6 +24,15 @@ sshux aims to be as unintrusive as possible, the tmux configuration aims to be
 as bare and non intrusive as possible. There's no prefix key, no status bars or
 anything. Use `tmux` in your shell to modify the current session if needed.
 
+## tweaking sshux
+
+Pass variables when you ssh to the server to alter how sshux behaves.
+`LC_` is abused as it's often in sshd's `AcceptEnv` configuration.
+
+### `LC_SSHUX_DISABLE=1`
+
+Disables SSHUX for this session.
+
 ## `extras/tmux`
 
 Convenience wrapper that strips TMUX if it matches `sshux-wrapped`. This can be

@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [[ $LC_SSHUX_DISABLE == 1 ]]; then
+	exit 1
+fi
+
 if [[ -z $SSH_CLIENT ]] || [[ -n $TMUX ]]; then
 	# Exit with non 0 to allow the calling shell to determine if it should
 	# continue or halt.
