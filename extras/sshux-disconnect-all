@@ -1,0 +1,12 @@
+#!/bin/bash
+# Disconnect all attached sessions, unless if called from within a tmux
+# session, then skip that one.
+
+tmux() {
+	command tmux -L sshux-wrapped "$@"
+}
+
+while read -r session; do
+	[[ $session ]] || continue
+	tmux detach-client -s "$session"
+done < <(tmux list-sessions -F "#{?#{==:#{pane_tty},$(tty)},,#{?session_attached,#S,}}")
