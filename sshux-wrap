@@ -32,7 +32,7 @@ rm -f "$config"
 if detached=$(find_detached); then
 	tmux "${tmux_opt[@]}" attach-session -t "$detached"
 else
-	tmux "${tmux_opt[@]}" -f "$config" new-session -s "sshux-$$"
+	tmux "${tmux_opt[@]}" new-session -s "sshux-$$"
 fi
 
 # exit 0 to tell the caller that we're leaving a session, this could be used to
