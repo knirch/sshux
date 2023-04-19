@@ -24,5 +24,8 @@ sshux aims to be as unintrusive as possible, the tmux configuration aims to be
 as bare and non intrusive as possible. There's no prefix key, no status bars or
 anything. Use `tmux` in your shell to modify the current session if needed.
 
-If needed, consider a wrapper to make normal tmux operations less fiddly. See
-example in `extras/tmux`.
+## `extras/tmux`
+
+Convenience wrapper that strips TMUX if it matches `sshux-wrapped`. This can be
+used if you wish to spawn tmux sessions normally. If you wish to communicate
+with the sshux session, use `-L sshux-wrapped`.
